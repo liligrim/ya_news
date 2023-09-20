@@ -7,18 +7,21 @@ from news.models import News, Comment
 
 
 @pytest.fixture
-def author(django_user_model):  
+def author(django_user_model):
     return django_user_model.objects.create(username='Автор')
+
 
 @pytest.fixture
 def author_client(author, client):
     client.force_login(author)
     return client
 
+
 @pytest.fixture
 def news(client):
     news = News.objects.create(title='Заголовок', text='Текст')
     return news
+
 
 @pytest.fixture
 def more_news(client):
@@ -43,6 +46,7 @@ def comment(author, news):
         )
     return comment
 
+
 @pytest.fixture
 def more_comment(author, news):
     now = timezone.now()
@@ -57,6 +61,7 @@ def more_comment(author, news):
         comment.save()
         comment_list.append(comment)
     return comment_list
+
 
 @pytest.fixture
 def form_data():
