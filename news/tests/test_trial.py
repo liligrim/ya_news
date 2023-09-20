@@ -10,7 +10,7 @@ class TestNews(TestCase):
     # Все нужные переменные сохраняем в атрибуты класса.
     TITLE = 'Заголовок новости'
     TEXT = 'Тестовый текст'
-    
+
     @classmethod
     def setUpTestData(cls):
         cls.news = News.objects.create(

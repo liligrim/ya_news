@@ -1,7 +1,6 @@
-# news/tests/test_content.py
 from django.conf import settings
 from django.test import TestCase
-# Импортируем функцию reverse(), она понадобится для получения адреса страницы.
+
 from django.urls import reverse
 from django.utils import timezone
 from datetime import datetime, timedelta
@@ -29,7 +28,7 @@ class TestHomePage(TestCase):
             )
             for index in range(settings.NEWS_COUNT_ON_HOME_PAGE + 1)
         ]
-        News.objects.bulk_create(all_news) 
+        News.objects.bulk_create(all_news)
 
     def test_news_count(self):
         # Загружаем главную страницу.
@@ -92,7 +91,7 @@ class TestDetailPage(TestCase):
     def test_anonymous_client_has_no_form(self):
         response = self.client.get(self.detail_url)
         self.assertNotIn('form', response.context)
-        
+
     def test_authorized_client_has_form(self):
         # Авторизуем клиент при помощи ранее созданного пользователя.
         self.client.force_login(self.author)
